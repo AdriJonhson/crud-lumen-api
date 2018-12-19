@@ -81,4 +81,15 @@ class ProductController extends Controller
 
         return response(['message' => 'Dados removidos com sucesso'], 200);
     }
+
+    public function show($slug)
+    {
+        $product = Product::where('slug', $slug)->get();
+
+        if(count($product) == 0){
+            return response(['message' => 'Produto não encontrado'], 404);
+        }
+
+        return response(['product' => ProductResource::collection($product)], 200);
+    }
 }

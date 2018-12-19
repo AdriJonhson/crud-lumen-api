@@ -25,6 +25,7 @@ $router->put('/categories/{slug}/edit', 'CategoryController@update');
 $router->delete('/categories/{slug}/delete', 'CategoryController@delete');
 
 $router->get('/products', 'ProductController@index');
+$router->get('/products/{slug}', 'ProductController@show');
 $router->post('/products/store', 'ProductController@store');
 $router->put('/products/{slug}/edit', 'ProductController@update');
 $router->delete('/products/{slug}/delete', 'ProductController@delete');
