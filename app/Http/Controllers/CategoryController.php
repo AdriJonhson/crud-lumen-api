@@ -63,7 +63,7 @@ class CategoryController extends Controller
 
         $category->update($request->all());
 
-        return response(['product' => $category, 'message' => 'Dados atualizados com sucesso'], 200);
+        return response(['category' => $category, 'message' => 'Dados atualizados com sucesso'], 200);
     }
 
     public function delete($slug)
@@ -77,5 +77,16 @@ class CategoryController extends Controller
         $category->delete();
 
         return response(['message' => 'Dados removidos com sucesso'], 200);
+    }
+
+    public function show($slug)
+    {
+        $category = Category::where('slug', $slug)->get();
+
+        if(count($category) == 0){
+            return response(['message' => 'Categoria não encontrada'], 403);
+        }
+
+        return response(['category' => CategoryResource::collection($category)], 200);
     }
 }

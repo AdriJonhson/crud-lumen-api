@@ -23,6 +23,7 @@ $router->get('/categories', 'CategoryController@index');
 $router->post('/categories/store', 'CategoryController@store');
 $router->put('/categories/{slug}/edit', 'CategoryController@update');
 $router->delete('/categories/{slug}/delete', 'CategoryController@delete');
+$router->get('/categories/{slug}', 'CategoryController@show');
 
 $router->get('/products', 'ProductController@index');
 $router->get('/products/{slug}', 'ProductController@show');
